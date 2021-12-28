@@ -1,0 +1,33 @@
+td, th {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  th {
+    background: rgb(73, 151, 73);
+    color: #f4d160;
+  }
+
+  #table{
+      margin:auto;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      padding-left: 36%;
+  }
+
+  #table1{
+    padding-left: 27%;
+  }
+
+  #update{
+    background-color:rgb(73, 151, 73);
+    color: white;
+    border: none;
+    margin-left: 5px;
+    padding: 7px;
+    border: radius 10px;
+  }
