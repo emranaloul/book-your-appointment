@@ -1,0 +1,22 @@
+#homeimg{
+
+  width:100%;
+}
+
+#home{
+    background-image: url('https://api.time.com/wp-content/uploads/2020/05/selling-home-coronavirus.jpg?w=800&quality=85');
+    background-color: aqua;
+    height: 200px;
+}
+#homeform{
+    margin: auto;
+    width:60%;
+}
+
+fieldset{
+    border:1px solid rgb(187, 171, 171);
+    padding:20px;
+}
+#submit{
+    margin-top:10px;
+}

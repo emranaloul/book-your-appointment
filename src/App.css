@@ -1,0 +1,100 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sellers{
+  width:80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+.sellerId{
+  width:80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center
+}
+
+.sellerCard{
+  display: flex;
+  flex-direction: column;
+  border:  1px solid black;
+  padding: 3rem;
+ justify-content: center;
+ text-align: center;
+ background-color: #fff;
+}
+
+.sellerForm{
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  line-height: 2rem;
+  /* justify-content: space-around;
+  flex-wrap: nowrap */
+}
+
+.sellerForm .text{
+  width: 100%;
+  margin: auto;
+  padding: 5px;
+}
+.sellerForm section{
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.sellerForm section input{
+  padding: 5px;
+}
+
+.sellerForm button{
+  margin: 3rem auto;
+  width:80%;
+  border: 0;
+  border-radius: 5px;
+  background-color: green;
+  color: #fff;
+ 
+
+}
