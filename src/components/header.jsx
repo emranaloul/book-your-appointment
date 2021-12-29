@@ -41,11 +41,16 @@ const Header = (props) => {
         <div>
           <If condition={props.user.loggedIn}>
             <Then>
+              <If condition={props.user.activeUser? props.user.activeUser.role === 'buyer': false}>
+                <Then>
               <Link to="/myrequests">
                 <Button id="myrequests" variant="success">
-                  My Requests
+                  My Appointments
                 </Button>
               </Link>
+
+                </Then>
+              </If>
               <Button id="signin" variant="light" onClick={handleLogout}>
                 logout
               </Button>

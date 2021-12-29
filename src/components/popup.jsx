@@ -7,10 +7,12 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import { If, Then } from "react-if";
-
+import {deleteMessage}from '../store/signup'
+import { connect} from "react-redux";
+import {deleteMessageA} from '../store/appointment'
 const Popup = (props) => {
   const [open, setOpen] = React.useState(true);
-  let x = open && props.show;
+  let x = props.show;
 //   const handleClickOpen = () => {
 //     setOpen(true);
 //   };
@@ -19,7 +21,9 @@ const Popup = (props) => {
   });
   const handleClose = () => {
     // props.setError(null);
-    setOpen(false);
+    // setOpen(false); 
+    props.deleteMessageA()   
+   props.deleteMessage()
   };
 
   return (
@@ -54,4 +58,7 @@ const Popup = (props) => {
   );
 };
 
-export default Popup;
+const mapDispatchToProps = { deleteMessage,deleteMessageA };
+export default connect(null,mapDispatchToProps)(Popup);
+
+
