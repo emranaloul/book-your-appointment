@@ -126,7 +126,7 @@ const [ userType, setUserType] = useState('')
           </Form>
           <Popup
             show={props.user.message}
-            title="Username already in use"
+            title="Email already in use"
             message="Please use a different email"
           />
         </Then>
