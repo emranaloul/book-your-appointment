@@ -1,20 +1,26 @@
 import axios from 'axios';
 import cookie from 'react-cookies'
-import jwt from 'jsonwebtoken'
-
 import { createSlice } from "@reduxjs/toolkit";
+
+
+
 let token = cookie.load('token');
 let user = cookie.load('user')
+
 let signup = createSlice({
     name: 'signup',
     initialState: {registered: false,loggedIn:user?true:  false,  token:token? token: null, activeUser:user? user: null},
     reducers:{
          addUser(state,action){
-            if(action.payload.token){
+           if(action.payload.token){
+             
+             
               cookie.save('token', action.payload.token) 
               return  {...state,registered: true, token: action.payload}
             } else if(action.payload.toString().includes('duplicate')){
               return  {...state, registered: false, token: null, message: 'email already registered'}
+            } else{
+              return {...state, ...action.payload}
             }
         }, 
          getUser(state,action){
@@ -28,10 +34,9 @@ let signup = createSlice({
           }
       },
       setUserDetails(state,action){
-          console.log("🚀 ~ file: signup.js ~ line 31 ~ setUserDetails ~ action", action.payload)
           let data = action.payload
           delete data[0].password
-          cookie.save('user',data)
+          cookie.save('user',data[0])
           return {...state, activeUser:data[0], loggedIn:true, token: data[1]}
       },
       logout(state,action){
@@ -42,6 +47,11 @@ let signup = createSlice({
         cookie.remove('appointments')
          window.location = '/'
         return {registered: false,loggedIn: false,  token: null, activeUser: null}
+      },
+      deleteMessage(state,action){
+        let x = state
+        delete x.message
+        return x
       }
     },
 
@@ -54,7 +64,11 @@ export const signupHandler = (payload) => (dispatch,state) => {
         data: payload
     })
     .then(res => {
-    dispatch(addUser(res.data));
+      if(res.data.id){
+        dispatch(addUser(res.data))
+      } else {
+      dispatch(addUser({message: 'User already exists'}))
+    }
    })
    .catch(err => {throw new Error(err.message)});
 }
@@ -65,16 +79,15 @@ export const signinHandler = payload => (dispatch,state) => {
     url: `${process.env.REACT_APP_API}/signin`,
     data: payload,
       headers:{Authorization:` Basic ${btoa(`${payload.email}:${payload.password}`)}`}
-
 })
 .then(res => {
   if(res.status === 200){
     dispatch(getUser(res.data));
   } else {
-    dispatch(getUser({message: 'wrong email or password'}))
+    dispatch(getUser({message: res.data}))
   }
  })
- .catch(e=> {throw new Error(e.message)});
+ .catch(() => dispatch(getUser({message: 'wrong email or password'})));
 }
 
 export const checkAuth = payload => (dispatch,state)=>{
@@ -100,5 +113,5 @@ export const logoutHandler = payload => (dispatch,state)=>{
 
 
 export default signup.reducer 
-export const {addUser,getUser,setUserDetails,logout} = signup.actions
+export const {addUser,getUser,setUserDetails,logout, deleteMessage} = signup.actions
 

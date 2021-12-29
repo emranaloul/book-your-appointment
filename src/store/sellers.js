@@ -26,7 +26,6 @@ export const getSellerHandler = (payload) => (dispatch,state) =>{
         url: `${process.env.REACT_APP_API}/getSeller`,
         headers: {Authorization:` Bearer ${payload}`}
     }).then((response) =>{
-        console.log("🚀 ~ file: sellers.js ~ line 20 ~ getSellerHandler ~ response", response)
         dispatch(getSeller(response.data))
     }).catch((error) =>{throw new Error(error.message)})
 }

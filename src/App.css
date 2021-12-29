@@ -39,10 +39,16 @@
 
 .sellers{
   width:80%;
-  margin: auto;
+  margin: 4rem auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around
+}
+.sellers h3{
+  background-color: green;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
 }
 .sellerId{
   width:80%;

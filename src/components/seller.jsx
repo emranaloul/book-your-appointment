@@ -27,8 +27,11 @@ const countHandler = (i, l) =>{
 }
   
   return (
-
     <div className="sellers">
+
+      <h3>Discover Our Service Providers</h3>
+    <div className="sellers">
+
         {props.sellers?props.sellers.map((seller, idx) => 
     <Card
       bg={colors[countHandler(idx, colors.length)].toLowerCase()}
@@ -52,6 +55,7 @@ const countHandler = (i, l) =>{
 
     
     </div>
+</div>
   );
 };
 

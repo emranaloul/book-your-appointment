@@ -21,7 +21,6 @@ import Seller from './components/sellerId'
 import Myrequests from './components/myrequest'
 import {getAppointmentsHandler} from './store/appointment'
 function App(props) {
- console.log("🚀 ~ file: App.js ~ line 23 ~ App ~ props", props)
  let token = cookie.load('token')
  const user = jwt.decode(token);
  useEffect(()=>{

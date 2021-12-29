@@ -2,6 +2,7 @@ import React , { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import {getAppointmentsHandler,addAppointmentHandler,deleteAppointmentHandler,updateAppointmentHandler} from '../store/appointment';
+import Popup from './popup';
 
 
 const Seller = props => {
@@ -41,13 +42,19 @@ const Seller = props => {
                 <button type="submit">Book</button>
             </form>
             </div>
+            <Popup
+            show={props.appointments[props.appointments.length - 1].message}
+            title="Sent Successfully"
+            message='Your appointment has been successfully booked'
+          />
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
     user: state.user,
-    sellers: state.seller
+    sellers: state.seller,
+    appointments: state.appointments
   });
 
   const mapDispatchToProps = { addAppointmentHandler };

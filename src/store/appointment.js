@@ -35,6 +35,12 @@ const appointments = createSlice({
             let x = s.filter(val => val.id !== action.payload.id)
             cookie.save('appointments',[...x, action.payload])
             return [...x, action.payload]
+        },
+        deleteMessageA(state,action){
+            let x =state
+            delete x[x.length - 1].message
+            cookie.save('appointments',x)
+            return x
         }
     },
 
@@ -57,7 +63,6 @@ export const addAppointmentHandler = payload => (dispatch,state)=>{
         headers: {Authorization:` Bearer ${payload.token}`},
         data: payload
     }).then(response=>{
-        console.log("🚀 ~ file: appointment.js ~ line 60 ~ addAppointment", addAppointment)
         dispatch(addAppointment(response.data))
     })
 }
@@ -96,4 +101,4 @@ export const updateAppointmentStatusHandler = payload => (dispatch,state)=>{
 }
 
 export default appointments.reducer
-export const {getAppointments,updateAppointmentStatus,updateAppointment,deleteAppointment, addAppointment} = appointments.actions
+export const {getAppointments,updateAppointmentStatus,updateAppointment,deleteAppointment, addAppointment,deleteMessageA} = appointments.actions
