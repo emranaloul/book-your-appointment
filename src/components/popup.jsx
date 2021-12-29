@@ -22,8 +22,8 @@ const Popup = (props) => {
   const handleClose = () => {
     // props.setError(null);
     // setOpen(false); 
+    props.deleteMessage()
     props.deleteMessageA()   
-   props.deleteMessage()
   };
 
   return (
